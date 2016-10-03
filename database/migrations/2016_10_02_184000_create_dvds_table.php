@@ -15,8 +15,8 @@ class CreateDvdsTable extends Migration
         Schema::create('dvds', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('dvd_type');
-            $table->foreign('dvd_type')->references('id')->on('dvd_types');
+            $table->integer('dvd_type')->unsigned()->index();
+            $table->foreign('dvd_type')->references('id')->on('dvd_types')->onDelete('cascade');
             $table->string('description')->nullable();
             $table->boolean('issued');
             $table->string('poster_url');

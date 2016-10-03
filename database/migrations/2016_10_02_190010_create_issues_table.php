@@ -14,10 +14,10 @@ class CreateIssuesTable extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('dvd_id');
-            $table->foreign('dvd_id')->references('id')->on('dvds');
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('dvd_id')->unsigned()->index();
+            $table->foreign('dvd_id')->references('id')->on('dvds')->onDelete('cascade');
             $table->date('issue_date');
             $table->date('due_date');
             $table-> date('return_date');

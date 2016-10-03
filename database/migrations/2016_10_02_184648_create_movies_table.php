@@ -14,8 +14,8 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('dvd_id');
-            $table->foreign('dvd_id')->references('id')->on('dvds');
+            $table->integer('dvd_id')->unsigned()->index();
+            $table->foreign('dvd_id')->references('id')->on('dvds')->onDelete('cascade');
             $table->date('release_date');
             $table->timestamps();
         });

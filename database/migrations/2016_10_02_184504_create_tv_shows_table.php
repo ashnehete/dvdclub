@@ -14,7 +14,7 @@ class CreateTvShowsTable extends Migration
     {
         Schema::create('tv_shows', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('dvd_id');
+            $table->integer('dvd_id')->unsigned()->index();
             $table->foreign('dvd_id')->references('id')->on('dvds');
             $table->integer('seasons');
             $table->integer('episodes');
