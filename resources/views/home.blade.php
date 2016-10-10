@@ -5,10 +5,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">{{ $name }}</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    @if ($issue_id == -1)
+                    No DVD issued
+                    @else
+                    DVD issued:
+                        <a href="{{ url('dvd/'.$issue_id)  }}">{{ $issue_id }}</a>
+                    @endif
                 </div>
             </div>
         </div>

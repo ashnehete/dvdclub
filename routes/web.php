@@ -12,9 +12,21 @@
 */
 
 Route::get('/', function () {
+    if (Auth::check())
+        return redirect('/home');
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/dvd/{id}', 'DvdController@getDvd');
+Route::get('/crew/{id}', 'CrewController@getCrew');
+
+// Admin routes
+Route::get('/insertDvd', 'DvdController@newDvdForm')->name('insertDvd');
+Route::post('/insertDvd', 'DvdController@insertDvd');
+
+Route::get('/insertCrew', 'CrewController@newCrewForm')->name('insertCrew');
+Route::post('/insertCrew', 'CrewController@insertCrew');

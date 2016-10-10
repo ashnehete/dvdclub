@@ -15,8 +15,8 @@ class CreateCrewTable extends Migration
         Schema::create('crew', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('job')->unsigned()->index();
-            $table->foreign('job')->references('id')->on('jobs')->onDelete('cascade');
+            $table->integer('job_id')->unsigned()->index();
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->date('birth_date');
             $table->string('image_url');
             $table->timestamps();

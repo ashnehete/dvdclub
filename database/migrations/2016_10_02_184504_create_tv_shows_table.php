@@ -19,7 +19,7 @@ class CreateTvShowsTable extends Migration
             $table->integer('seasons');
             $table->integer('episodes');
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable()->default(null);
             $table->timestamps();
         });
     }
