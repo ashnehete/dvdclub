@@ -24,6 +24,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/dvd/{id}', 'DvdController@getDvd');
 Route::get('/crew/{id}', 'CrewController@getCrew');
+Route::get('/genre/{id}', 'GenreController@getGenre');
+
+Route::get('/search', 'SearchController@get');
 
 // Admin routes
 Route::get('/insertDvd', 'DvdController@newDvdForm')->name('insertDvd');

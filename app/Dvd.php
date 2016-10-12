@@ -17,4 +17,8 @@ class Dvd extends Model
     public function crew() {
         return $this->belongsToMany('App\Crew');
     }
+
+    public function genres() {
+        return $this->belongsToMany('App\Genre');
+    }
 }

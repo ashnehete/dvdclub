@@ -43,11 +43,22 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    &nbsp;
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+                    <!-- Search bar -->
+                    <li style="height: 50px">
+                        <form class="form-horizontal" role="form" method="GET" action="{{ url('/search') }}"
+                            style="padding: 7px 15px">
+                            <div class="input-group" style="width: 250px;">
+                                <input type="text" name="q" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>

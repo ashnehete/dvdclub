@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Crew;
 use App\Dvd;
+use App\Genre;
 use App\Movie;
 use App\TvShow;
 use Illuminate\Http\Request;
@@ -22,6 +23,8 @@ class DvdController extends Controller
         if ($dvd->dvd_type == 1) $dvd->movie;
         else $dvd->tvshow;
         $dvd->crew;
+        $dvd->genres;
+//        dd($dvd->toArray());
         return view('dvd.show', $dvd->toArray());
     }
 
@@ -59,14 +62,19 @@ class DvdController extends Controller
         foreach ($data['crew'] as $crewid) {
             $dvd->crew()->attach($crewid);
         }
+        foreach ($data['genres'] as $genreid) {
+            $dvd->genre()->attach($genreid);
+        }
 
         return redirect()->route('insertDvd');
     }
 
     public function newDvdForm() {
         $crew = Crew::orderBy('name')->get();
+        $genres = Genre::orderBy('name')->get();
         return view('dvd.new', [
-            'crew' => $crew->toArray()
+            'crew' => $crew->toArray(),
+            'genres' => $genres->toArray()
         ]);
     }
 }

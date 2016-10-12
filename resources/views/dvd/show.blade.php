@@ -16,6 +16,10 @@
         </div>
     </div>
     <div class="col-md-6">
+        @foreach($genres as $genre)
+            <a href="{{ url('genre/'.$genre['id']) }}">{{ $genre['name'] }}</a>
+        @endforeach
+        <br>
         {{ $description }}<br>
         <hr>
         @if($dvd_type == 1)
