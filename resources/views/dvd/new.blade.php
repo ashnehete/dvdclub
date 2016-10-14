@@ -28,6 +28,18 @@
         <div class="form-group">
             <label for="crew" class="col-md-4 control-label">Crew</label>
             <div class="col-md-6">
+                <select name="genres[]" class="form-control" multiple>
+                    @foreach($genres as $genre)
+                        <option value="{{ $genre['id'] }}">{{ $genre['name'] }}</option>
+                    @endforeach
+                </select>
+                Hold <kbd>ctrl</kbd> when selecting multiple genres.<br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="crew" class="col-md-4 control-label">Crew</label>
+            <div class="col-md-6">
                 <select name="crew[]" class="form-control" multiple>
                     @foreach($crew as $crewmember)
                         <option value="{{ $crewmember['id'] }}">{{ $crewmember['name'] }}</option>

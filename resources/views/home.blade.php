@@ -16,9 +16,13 @@
                             <div class="row">
                                 <div class="col-md-4 center">
                                     <img src="{{ $poster_url }}" />
+                                    <div>
+                                        <button class="btn btn-default btn-lg" onclick="returnDvd({{ $issue_id }})"
+                                                id="return">Return</button>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h3><a href="{{ url('dvd/'.$id) }}">{{ $title }}</a></h3>
+                                    <h3><a href="{{ url('dvd/'.$issue_id) }}">{{ $title }}</a></h3>
                                     <p>{{ $description }}</p>
                                 </div>
                             </div>
@@ -30,11 +34,36 @@
     </div>
 @endsection
 
+@push('scripts')
+<script>
+    function returnDvd(id) {
+        $.ajax({
+            url: "{{ url('/return') }}/" + id,
+            success: function (result) {
+                if (result.hasOwnProperty("error")) {
+                    alert("Error: " + result["error"]);
+                } else {
+                    var msg = ["Dvd returned successfully.",
+                        "Return Date: " + result["return_date"],
+                        "Late Fees: " + result["late_fees"]];
+                    alert(msg.join("\n"));
+                }
+                location.reload();
+            }
+        });
+    }
+</script>
+@endpush
+
 @push('styles')
 <style>
     img {
         height: 200px;
         width: auto;
+    }
+
+    #return {
+        margin: 1em;
     }
 </style>
 @endpush

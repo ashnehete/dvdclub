@@ -63,7 +63,7 @@ class DvdController extends Controller
             $dvd->crew()->attach($crewid);
         }
         foreach ($data['genres'] as $genreid) {
-            $dvd->genre()->attach($genreid);
+            $dvd->genres()->attach($genreid);
         }
 
         return redirect()->route('insertDvd');

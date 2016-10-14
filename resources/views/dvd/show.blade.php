@@ -8,7 +8,7 @@
         <div>
             @if(Auth::check() && Auth::user()->issue_id == -1)
                 @if($issued == -1)
-                    <button class="btn btn-default btn-lg" id="issue">Issue</button>
+                    <button class="btn btn-default btn-lg" onclick="issueDvd({{ $id }})" id="issue">Issue</button>
                 @else
                     <button class="btn btn-default btn-lg" disabled>Issued</button>
                 @endif
@@ -36,12 +36,33 @@
             <a href="{{ url('crew/'.$crewmember['id']) }}">{{ $crewmember['name'] }}</a><br>
         @endforeach
     </div>
-
-    @push('scripts')
-    <script>
-        function issue() {
-            alert('issue');
-        }
-    </script>
-    @endpush
 @endsection
+
+@push('scripts')
+<script>
+    function issueDvd(id) {
+        $.ajax({
+            url: "{{ url('/issue') }}/" + id,
+            success: function (result) {
+                if (result.hasOwnProperty("error")) {
+                    alert("Error: " + result["error"]);
+                } else {
+                    var msg = ["Dvd issued successfully.",
+                        "Issue Date: " + result["issue_date"],
+                        "Due Date: " + result["due_date"]];
+                    alert(msg.join("\n"));
+                }
+                location.reload();
+            }
+        });
+    }
+</script>
+@endpush
+
+@push('styles')
+<style>
+    #issue {
+        margin: 1em;
+    }
+</style>
+@endpush

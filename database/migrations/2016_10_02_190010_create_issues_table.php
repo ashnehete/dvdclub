@@ -20,8 +20,9 @@ class CreateIssuesTable extends Migration
             $table->foreign('dvd_id')->references('id')->on('dvds')->onDelete('cascade');
             $table->date('issue_date');
             $table->date('due_date');
-            $table-> date('return_date');
-            $table->integer('late_fees');
+            $table-> date('return_date')->nullable()->default(null);
+            $table->integer('late_fees')->nullable()->default(0);
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

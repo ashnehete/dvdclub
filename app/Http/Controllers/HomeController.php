@@ -31,7 +31,7 @@ class HomeController extends Controller
         else {
             $id = $user['issue_id'];
             $dvd = Dvd::where('id', $id)->first();
-            $data = array_merge($user->toArray(), $dvd->toArray());
+//            $data = array_merge($user->toArray(), $dvd->toArray());
 //            dd($data);
             return view('home', $user->toArray(), $dvd->toArray());
         }

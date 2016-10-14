@@ -28,6 +28,9 @@ Route::get('/genre/{id}', 'GenreController@getGenre');
 
 Route::get('/search', 'SearchController@get');
 
+Route::get('/issue/{id}', 'IssueController@issueDvd');
+Route::get('/return/{id}', 'IssueController@returnDvd');
+
 // Admin routes
 Route::get('/insertDvd', 'DvdController@newDvdForm')->name('insertDvd');
 Route::post('/insertDvd', 'DvdController@insertDvd');
