@@ -1,9 +1,9 @@
-#DVD Club
+# DVD Club
 __DBMS Project__<br>
 Language: PHP<br>
 Framework: Laravel 5.3
 
-##Tables
+## Tables
 name|
 ---|
 users|
@@ -19,7 +19,7 @@ issues|
 dvd_genre|
 crew_dvd|
 
-##Routes
+## Routes
 route|description
 ---|---
 public/insertCrew|To insert a new crew member
